@@ -7,9 +7,11 @@ cache:
 branches:
   only:
     - master
+before_script:
+  - npm install -g @angular/cli
 script:
-  - npm test
-  - npm build
+  - ng lint
+  - ng build --prod --base-href https://kayle7777.github.io/angularCart/
 deploy:
   provider: pages
   skip-cleanup: true
