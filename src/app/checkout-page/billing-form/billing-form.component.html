@@ -1,3 +1,4 @@
+<h4 class="mb-3">Billing address</h4>
 <form [formGroup]="signupForm" novalidate (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-md-6 mb-3">
@@ -207,7 +208,9 @@
   </div>
 
   <hr class="mb-4" />
-  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+  <button class="btn btn-primary btn-lg btn-block" type="submit">
+    Continue to checkout
+  </button>
   <div *ngIf="submitted" class="d-flex justify-content-center" (click)="fillForms()">
     <button type="button" class="btn btn-primary btn-lg" style="margin-top: 1rem" ng-click="fillForms()">
       Fill Formz

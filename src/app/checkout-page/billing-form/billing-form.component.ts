@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-billing-form',
@@ -10,7 +11,7 @@ export class BillingFormComponent implements OnInit {
   signupForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -29,6 +30,7 @@ export class BillingFormComponent implements OnInit {
       cardExpiration: ['', Validators.required],
       cardCVV: ['', Validators.required],
     });
+    console.log(this.signupForm.valid);
   }
 
   get s() {
@@ -56,6 +58,6 @@ export class BillingFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.signupForm.value);
+    if (this.signupForm.valid) this.router.navigate(['/success']);
   }
 }
