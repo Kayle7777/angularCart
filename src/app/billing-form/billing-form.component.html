@@ -208,7 +208,7 @@
 
   <hr class="mb-4" />
   <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-  <div class="d-flex justify-content-center" (click)="fillForms()">
+  <div *ngIf="submitted" class="d-flex justify-content-center" (click)="fillForms()">
     <button type="button" class="btn btn-primary btn-lg" style="margin-top: 1rem" ng-click="fillForms()">
       Fill Formz
     </button>
