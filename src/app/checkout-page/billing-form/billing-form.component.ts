@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-billing-form',
@@ -11,7 +10,7 @@ export class BillingFormComponent implements OnInit {
   signupForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -30,8 +29,9 @@ export class BillingFormComponent implements OnInit {
       cardExpiration: ['', Validators.required],
       cardCVV: ['', Validators.required],
     });
-    console.log(this.signupForm.valid);
   }
+
+  @Output() messageEvent = new EventEmitter<object>();
 
   get s() {
     return this.signupForm.controls;
@@ -58,6 +58,6 @@ export class BillingFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.signupForm.valid) this.router.navigate(['/success']);
+    if (this.signupForm.valid) this.messageEvent.emit(this.signupForm.value);
   }
 }

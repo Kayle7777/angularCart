@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutPageComponent },
   { path: 'success', component: SuccessComponent },
   { path: '', redirectTo: '/checkout', pathMatch: 'full' },
+  { path: '**', component: CheckoutPageComponent },
 ];
 
 @NgModule({
